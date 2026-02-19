@@ -1,6 +1,5 @@
 
-import mongoose, {Schema, Document, Model} from "mongoose";
-import { time } from "node:console";
+import mongoose, { Schema, Document, Model } from "mongoose";
 
 export interface IUser extends Document {
     name: string;
@@ -12,7 +11,7 @@ export interface IUser extends Document {
 
 const UserSchema: Schema = new Schema<IUser>(
     {
-        name: {type: String, required: true, trim: true},
+        name: { type: String, required: true, trim: true },
         email: {
             type: String,
             required: true,
@@ -20,9 +19,9 @@ const UserSchema: Schema = new Schema<IUser>(
             lowercase: true,
             index: true,
         },
-        passwordHash: {type: String, required: true},
-    }, 
-    {timestamps: true}
+        passwordHash: { type: String, required: true },
+    },
+    { timestamps: true }
 );
 
 export const User: Model<IUser> = mongoose.model<IUser>("User", UserSchema);
